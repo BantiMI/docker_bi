@@ -29,7 +29,7 @@ case "$1" in
         echo "Отчёт создан в data/report.html"
         ;;
     *)
-        echo "Использование: $0 {build_generator|run_generator|create_local_data}"
+        echo "Использование: $0 {build_generator|run_generator|create_local_data|build_reporter|run_reporter}"
         exit 1
         ;;
 esac
