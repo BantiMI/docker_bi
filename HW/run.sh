@@ -8,7 +8,7 @@ case "$1" in
     run_generator)
         echo "Запуск контейнера"
         mkdir -p data
-        docker run --rm -v /d/docker_bi/HW/data:/data generator
+        docker run --rm -v /mnt/d/docker_bi/HW/data:/data generator
         echo "Файл создан в data/data.csv"
         ;;
     create_local_data)
