@@ -28,6 +28,26 @@ case "$1" in
         docker run --rm -v /mnt/d/docker_bi/HW/data:/data reporter
         echo "Отчёт создан в data/report.html"
         ;;
+
+    structure)
+        echo "Структура:"
+        find . -not -path './.git/*' -not -path './node_modules/*' | sort
+        ;;
+    clear_data)
+        echo "Очистка папки data/"
+        rm -f data/*.csv data/*.html
+        echo "Папка data/ очищена"
+        ;;
+    inside_generator)
+        echo "Содержимое /data из контейнера генератора:"
+        mkdir -p data
+        docker run --rm -v /mnt/d/docker_bi/HW/data:/data generator ls -la /data
+        ;;
+    inside_reporter)
+        echo "Содержимое /data из контейнера аналитика:"
+        mkdir -p data
+        docker run --rm -v /mnt/d/docker_bi/HW/data:/data reporter ls -la /data
+        ;;
     *)
         echo "Использование: $0 {build_generator|run_generator|create_local_data|build_reporter|run_reporter}"
         exit 1
